@@ -3,7 +3,6 @@ import math
 from Words import Words
 # Main Function
 
-
 def __main__():
     disect_word()
     print("Welcome to Hangman by Maya and Josh! Your word is " + str(len(word)) + " letters long")
@@ -19,19 +18,16 @@ def get_word():  # gets random word from Words.py
 def disect_word():  # disects a random word selected into its individual letters
     word_disect = word
     word_letters = list(word_disect)
-    # print(word_letters)
     return word_letters
-    # print(word_letters)
 
 
 def guess_word():  # player types into terminal
     guess = input("Please type a letter to guess: ")
-    guess = guess[0]
-    # print(guess)
+    guess = guess[0] #guess should just be 1 letter, if it isn't then this shortens it to first characters
 
     for i in disect_word():
-        won = False
-        l_printed = False
+        won = False #Sets win condition to false
+        l_printed = False #Sets if a correct letter has been printed to false
         if (guess == i):
             guessed_letters.add(guess)
             correct_letters.add(guess)
@@ -47,13 +43,6 @@ def guess_word():  # player types into terminal
             guessed_letters.add(guess)
             if l_printed == False: # I'm actually so smart
                 print("_")
-
-        #print(len(guessed_letters))
-
-        
-        
-
-
 
     print("Letters that you've guessed: " + str(guessed_letters))
 
