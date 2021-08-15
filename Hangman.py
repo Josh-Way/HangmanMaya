@@ -36,6 +36,8 @@ def guess_word():  # player types into terminal
             guessed_letters.add(guess)
             correct_letters.add(guess)
 
+        incorrect_letters = (guessed_letters - correct_letters) #Compares guessed and correct letters to create a list of incorrect letters, used to calculate lives.
+
         for letter in correct_letters:
             if (letter == i):
                 print(letter)
@@ -48,28 +50,38 @@ def guess_word():  # player types into terminal
 
         #print(len(guessed_letters))
 
-        if set(disect_word()) == correct_letters:
+        
+        
+
+
+
+    print("Letters that you've guessed: " + str(guessed_letters))
+
+    lives = slives - len(incorrect_letters) #takes number of letters wrong away from lives
+
+    print("You have " + str(lives) + " Lives remaining")
+
+    if set(disect_word()) == correct_letters: #Win condition
             print("You have won!")
             won = True
 
-        if won == True:
-            return
+    if won == True:
+        return
 
-    print("Letters that you've guessed: " + str(guessed_letters))
+    if lives == 0:
+        print("Game over, the word was " + str(word) + "!")
+        return
 
     print("To continue playing, press 'enter', or type EXIT to end")
     inp_enter = input("")
     if inp_enter != "EXIT":
         guess_word()
 
-def Remove_Lives(): #Removes a players lives
-    lives = slives
-    lives -= 1
-    return lives
 
-slives = 11
 word = get_word()
+slives = len(word) + 2
 guessed_letters = set()
 correct_letters = set()
+incorrect_letters = set()
 
 __main__()
