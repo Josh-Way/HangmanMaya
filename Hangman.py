@@ -64,6 +64,8 @@ def guess_word():  # player types into terminal
     print("To continue playing, press 'enter', or type EXIT to end")
     inp_enter = input("")
     if inp_enter != "EXIT":
+        import os
+        os.system('cls' if os.name == 'nt' else 'clear')
         guess_word()
 
 
