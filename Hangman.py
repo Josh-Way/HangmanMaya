@@ -6,6 +6,7 @@ from Words import Words
 
 def __main__():
     disect_word()
+    print("Welcome to Hangman by Maya and Josh! Your word is " + str(len(word)) + " letters long")
     guess_word()
     return disect_word()
 
@@ -29,6 +30,7 @@ def guess_word():  # player types into terminal
     # print(guess)
 
     for i in disect_word():
+        won = False
         l_printed = False
         if (guess == i):
             guessed_letters.add(guess)
@@ -44,6 +46,15 @@ def guess_word():  # player types into terminal
             if l_printed == False: # I'm actually so smart
                 print("_")
 
+        #print(len(guessed_letters))
+
+        if set(disect_word()) == correct_letters:
+            print("You have won!")
+            won = True
+
+        if won == True:
+            return
+
     print("Letters that you've guessed: " + str(guessed_letters))
 
     print("To continue playing, press 'enter', or type EXIT to end")
@@ -51,7 +62,12 @@ def guess_word():  # player types into terminal
     if inp_enter != "EXIT":
         guess_word()
 
+def Remove_Lives(): #Removes a players lives
+    lives = slives
+    lives -= 1
+    return lives
 
+slives = 11
 word = get_word()
 guessed_letters = set()
 correct_letters = set()
