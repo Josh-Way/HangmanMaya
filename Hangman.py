@@ -29,17 +29,20 @@ def guess_word():  # player types into terminal
     # print(guess)
 
     for i in disect_word():
+        l_printed = False
         if (guess == i):
             guessed_letters.add(guess)
-            correct_letters.append(guess)
+            correct_letters.add(guess)
 
         for letter in correct_letters:
             if (letter == i):
                 print(letter)
+                l_printed = True #Hi mims!!! Idk if you'll see this but this is here as a boolean expression to only print the '_' when a word isn't guessed correctly!
 
         else:
             guessed_letters.add(guess)
-            print("_")
+            if l_printed == False: # I'm actually so smart
+                print("_")
 
     print("Letters that you've guessed: " + str(guessed_letters))
 
@@ -51,6 +54,6 @@ def guess_word():  # player types into terminal
 
 word = get_word()
 guessed_letters = set()
-correct_letters = list()
+correct_letters = set()
 
 __main__()
