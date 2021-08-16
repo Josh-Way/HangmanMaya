@@ -23,6 +23,8 @@ def disect_word():  # disects a random word selected into its individual letters
 
 def guess_word():  # player types into terminal
     guess = input("Please type a letter to guess: ")
+    while guess == "":
+        guess = input("Please type a letter to guess: ")
     guess = guess[0] #guess should just be 1 letter, if it isn't then this shortens it to first characters
 
     for i in disect_word():
